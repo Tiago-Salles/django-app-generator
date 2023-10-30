@@ -1,2 +1,0 @@
-class HelloWorldView:
-    pass

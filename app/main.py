@@ -1,7 +1,7 @@
 from app.infra.server.app_server import AppServer
 
-def main():
-    AppServer.initialize_server()
+async def main():
+    await AppServer().initialize_server()
     
 
 if __name__ == "__main__":
