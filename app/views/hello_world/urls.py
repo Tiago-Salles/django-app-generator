@@ -1,5 +1,5 @@
-from app.core.utils.http_method import HttpMethod
-from app.views.hello_world.hello_world import HelloWorldView
+from core.utils.http_method import HttpMethod
+from views.hello_world.hello_world import HelloWorldView
 
 class HelloWorldUrls:
 

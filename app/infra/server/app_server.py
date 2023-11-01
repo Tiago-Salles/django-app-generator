@@ -1,20 +1,19 @@
 from fastapi import FastAPI, APIRouter
-from app.infra.urls import URLS
+from ..urls import URLS
 from core.utils.http_method import HttpMethod
 
-class AppServer:
-
-    _app = FastAPI()
+class AppServer(FastAPI):
     _router = APIRouter()
 
 
     async def initialize_server(self):
         try:
-            await self.initialize_routes()
+            await self.__initialize_routes()
+            return self
         except Exception as e:
             raise e 
         
-    async def initialize_routes(self):
+    async def __initialize_routes(self):
         for url_classes in URLS:
             for url in url_classes:
                 if url["method"] not in [HttpMethod]:
@@ -40,3 +39,5 @@ class AppServer:
                     case HttpMethod.DELETE:
                         @self._router.delete(url["path"])
                         async def call(): return url["function"]
+            
+        self.include_router(self._router)
