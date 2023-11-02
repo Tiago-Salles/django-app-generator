@@ -1,5 +1,3 @@
-from infra.server.app_server import AppServer
-import sys
-sys.path.append("..")
+from core.infra.server.app_server import AppServer
 
 app = AppServer().initialize_server()
